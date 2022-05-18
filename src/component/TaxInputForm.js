@@ -1,24 +1,24 @@
 import React, { useState } from 'react'
+import './TaxInputForm.css'
 
 const TaxInputForm = () => {
     const [income, setIncome]= useState(0);
     const[tax, setTax] = useState(0);
+    
 
     const incomeHandler = (e) => {
         const income = e.target.value;
-        setIncome(income);
-        if(income !== 0){
-        const tax = (income * 10)/100;
-        setTax(tax);
+        setIncome(income); 
     }
-
-    }
-
-
 
     const submitHandler = (event) => {
         console.log(event)
         event.preventDefault();
+        if(income !== 0){
+          const tax = (income * 10)/100;
+          setTax(tax);
+          
+      }
       }
     
   return (
@@ -29,10 +29,14 @@ const TaxInputForm = () => {
         value={income}
         onChange={incomeHandler}/>
         </label>
-        <input type="submit" />
-        {/* <button>Calculate Tax</button> */}
+        
+        <button onClick={submitHandler}>Calculate Tax</button>
         </form>
-        <p>The calculated tax is {tax}</p>  
+
+        
+          <p>The calculated tax is {tax}</p>
+        
+         
         
         
     </div>
